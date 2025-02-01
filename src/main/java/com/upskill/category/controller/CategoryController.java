@@ -8,8 +8,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import com.upskill.category.model.Category;
 import com.upskill.category.repository.CategoryRepository;
@@ -24,23 +26,21 @@ public class CategoryController {
 	private CategoryRepository repo;
 	
 	@GetMapping("/categories")
-	public List<Category> getCategories() {
+	public ResponseEntity<List<Category>> getCategories() {
 	
 		String port = environment.getProperty("local.server.port");
 		System.out.println("env port "+ port);
 		
-		
-		return repo.findAll();
+		return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
 	}
 
 	
 	@GetMapping("/category/{id}")
-	public String getCategoryById(@PathVariable int id) {
+	public ResponseEntity<String> getCategoryById(@PathVariable int id) {
 	
 		String port = environment.getProperty("local.server.port");
 		System.out.println("env port "+ port);
 		
-		
-		return repo.findById(id).get().getName();
+		return new ResponseEntity<>(repo.findById(id).get().getName(), HttpStatus.OK);
 	}
 }

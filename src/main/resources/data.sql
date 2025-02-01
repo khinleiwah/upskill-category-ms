@@ -18,6 +18,3 @@ values(6, 'Clothing', 'https://img.freepik.com/free-photo/clothing-hangers-fashi
 
 insert into category(id, category_name, image)
 values(7, 'Beauty & Personal Care', 'https://img.freepik.com/free-photo/skincare-products-arranged-flat-lay_23-2149106484.jpg?w=1380');
-
-insert into category(id, category_name, image)
-values(8, 'Testing', 'https://img.freepik.com/free-photo/skincare-products-arranged-flat-lay_23-2149106484.jpg?w=1380');
